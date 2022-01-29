@@ -36,8 +36,13 @@ app.use(express.json())
 app.get('/bookshelf', async(req,res)=> {
     try {
         res.json(await Book.find({}))
-    } catch (erro) {
+    } catch (error) {
         res.status (400).json(error)
     }
 })
 
+
+
+
+
+app.listen(PORT, ()=> console.log (`listening on PORT ${PORT}`))
