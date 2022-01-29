@@ -49,7 +49,7 @@ app.post('/bookshelf', async (req,res) => {
     }
 })
 
-app.delete('/book/:id', async (req,res) => {
+app.delete('/bookshelf/:id', async (req,res) => {
     try {
         res.json(await Book.findByIdAndDelete (req.params.id))
     } catch (error) {
@@ -57,7 +57,7 @@ app.delete('/book/:id', async (req,res) => {
     }
 })
 
-app.put('/book/:id', async(req,res)=> {
+app.put('/bookshelf/:id', async(req,res)=> {
     try{
         res.json(await Book.findByIdAndUpdate(req.params.id, req.body, { new : true }))
     } catch (error) {
