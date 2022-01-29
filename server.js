@@ -41,6 +41,14 @@ app.get('/bookshelf', async(req,res)=> {
     }
 })
 
+app.post('/bookshelf', async (req,res) => {
+    try{
+        res.json(await Book.create (req.body))
+    } catch (error) {
+        res.status(400).json(error)
+    }
+})
+
 
 
 
