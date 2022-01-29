@@ -1,5 +1,5 @@
 require ('dotenv').config()
-const (PORT=3001, DATABASE_URL ) = process.env 
+const { PORT=3001, DATABASE_URL } = process.env 
 const express = require ('express')
 const mongoose = require('mongoose')
 const app = express()
@@ -23,4 +23,21 @@ const bookSchema = new mongoose.Schema({
     image: String,
 })
 
-const Book = mongoose.model('Book, bookSchema')
+const Book = mongoose.model('Book', bookSchema)
+
+/// middleware ///
+
+app.use(cors())
+app.use(morgan('dev'))
+app.use(express.json())
+
+///routes///
+
+app.get('/bookshelf', async(req,res)=> {
+    try {
+        res.json(await Book.find({}))
+    } catch (erro) {
+        res.status (400).json(error)
+    }
+})
+
