@@ -50,7 +50,7 @@ app.post('/bookshelf', async (req,res) => {
 })
 
 app.delete('/bookshelf/:id', async (req,res) => {
-    try {
+    try{
         res.json(await Book.findByIdAndDelete (req.params.id))
     } catch (error) {
         res.status(400).json(error)
